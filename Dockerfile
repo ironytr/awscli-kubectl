@@ -7,11 +7,11 @@ ENV GLIBC_VERSION=2.34-r0
 
 #Install GNU C Library as an Alpine Linux package to run binaries linked against glibc
 #https://github.com/aws/aws-cli/issues/4685#issuecomment-615872019
-RUN apk --no-cache add curl \
+RUN apk --no-cache add curl zsh\
     && curl -sL https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub -o /etc/apk/keys/sgerrand.rsa.pub \
     && curl -sLO https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-${GLIBC_VERSION}.apk \
     && curl -sLO https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-bin-${GLIBC_VERSION}.apk \
-    && apk add --no-cache \
+    && apk add --no-cache --force-overwrite \
         glibc-${GLIBC_VERSION}.apk \
         glibc-bin-${GLIBC_VERSION}.apk \
     && curl -sL https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o awscliv2.zip \
