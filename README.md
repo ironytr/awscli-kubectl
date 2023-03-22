@@ -106,4 +106,4 @@ spec:
               imagePullPolicy: IfNotPresent
               name: ecr-token-helper
           restartPolicy: Never
-``
+```
