@@ -7,7 +7,7 @@ https://hub.docker.com/r/gtsopour/awscli-kubectl
 ## Docker build/run
 `docker build -t gtsopour/awscli-kubectl .`<br/>
 `docker run -t -i -p 80:80 gtsopour/awscli-kubectl`
-
+https://gtsopour.medium.com/aws-elastic-container-registry-ecr-is-a-fully-managed-container-registry-7624781635d9
 
 
 ```
@@ -54,7 +54,7 @@ metadata:
   name: ecr-token-helper
   namespace: default
 spec:
-  schedule: '* * * * *'
+  schedule: '0 */6 * * *'
   successfulJobsHistoryLimit: 1
   jobTemplate:
     spec:
