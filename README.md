@@ -70,14 +70,11 @@ spec:
                   AWS_ACCOUNT_URL=${AWS_ACCESS_REGISTRY_ID}.dkr.ecr.${REGION}.amazonaws.com
                   echo $TOKEN
                   echo $AWS_ACCOUNT_URL
-                  echo "hehehehe"
                   for REPOSITORY in ${ECR_REPOSITORIES//,/ }
                   do
                       # Add env var
                       REPOSITORY_VALUE=$(echo "$SECRET_NAME" | awk '{print tolower($0)}')-$(echo "$REPOSITORY" | awk '{print tolower($0)}')
                       REPO_URL=${AWS_ACCOUNT_URL}/$(echo "$REPOSITORY" | awk '{print tolower($0)}')
-                      ECHO $REPO_URL "ASDASDASD"
-                      echo "NE"+ $(echo "$REPOSITORY" | awk '{print tolower($0)}') + "hahahe"
                       kubectl delete secret -n default --ignore-not-found $REPOSITORY_VALUE
                       kubectl create secret -n default docker-registry $REPOSITORY_VALUE \
                       --docker-server=$REPO_URL \
